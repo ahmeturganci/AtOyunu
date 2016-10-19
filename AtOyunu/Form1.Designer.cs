@@ -31,6 +31,8 @@
             this.dgvPanel = new System.Windows.Forms.DataGridView();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.btnOlustur = new System.Windows.Forms.Button();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPanel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,18 +67,42 @@
             this.btnOlustur.UseVisualStyleBackColor = true;
             this.btnOlustur.Click += new System.EventHandler(this.btnOlustur_Click);
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(396, 40);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(42, 17);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "6x6";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(396, 63);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(42, 17);
+            this.radioButton4.TabIndex = 4;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "7x7";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 370);
+            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.btnOlustur);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.dgvPanel);
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPanel)).EndInit();
+            this.Text = "At Oyunu";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,6 +113,8 @@
         private System.Windows.Forms.DataGridView dgvPanel;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button btnOlustur;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }
 
