@@ -13,77 +13,88 @@ namespace AtOyunu
     public partial class Form1 : Form
     {
         int X, Y, curX, curY, k = 0, skor = 1;
-        bool devamEt = false;
-        int[,] kontrol;
         public Form1()
         {
             InitializeComponent();
         }
         public void Temizle()
         {
-            for (int i = 0; i < X + 1; i++)
+            for (int i = 0; i < X; i++)
             {
-                for (int j = 0; j < Y + 1; j++)
+                for (int j = 0; j < Y; j++)
                 {
                     dgvPanel.Rows[j].Cells[i].Style.BackColor = Color.White;
                 }
             }
         }
+        public bool sayiMi(int x, int y)
+        {
+            string s;
+            int n;
+            bool sayiMi = false;
+            try
+            {
+                s = dgvPanel.Rows[y].Cells[x].Value.ToString();
+                if (!string.IsNullOrEmpty(s))
+                    sayiMi = int.TryParse(s, out n);
+            }
+            catch
+            {
+                s = null; // satır sütun olayından dolayı patlama var burada
+                sayiMi = true;
+            }
 
+            
+           
+            return sayiMi;
+        }
         public void Kontrol(int x, int y)
         {
             //tanımlama
-            //int[] skorKontrol = new int[7];
-            //int sayac=0;
 
-            kontrol = new int[X + 1, Y + 1];
-            devamEt = false;
-            //x ve y koordinatına skor için değer ata
-
-            dgvPanel.Rows[y].Cells[x].Value = skor;
-            skor++;
+            Temizle();
 
             //kontrol
             //
             if (y + 1 <= Y && x - 2 >= 0)
             {
-                dgvPanel.Rows[y + 1].Cells[x - 2].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y + 1, x - 2] = 1;
+                if (!sayiMi(x - 2, y + 1))
+                    dgvPanel.Rows[y + 1].Cells[x - 2].Style.BackColor = Color.PaleVioletRed;
             }
             if (y + 1 <= Y && x + 2 <= X)
             {
-                dgvPanel.Rows[y + 1].Cells[x + 2].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y + 1, x + 2] = 1;
+                if (!sayiMi(x + 2, y + 1))
+                    dgvPanel.Rows[y + 1].Cells[x + 2].Style.BackColor = Color.PaleVioletRed;
             }
             if (y - 1 >= 0 && x + 2 <= X)
             {
-                dgvPanel.Rows[y - 1].Cells[x + 2].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y - 1, x + 2] = 1;
+                if (!sayiMi(x + 2, y - 1))
+                    dgvPanel.Rows[y - 1].Cells[x + 2].Style.BackColor = Color.PaleVioletRed;
             }
             if (y - 1 >= 0 && x - 2 >= 0)
             {
-                dgvPanel.Rows[y - 1].Cells[x - 2].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y - 1, x - 2] = 1;
+                if (!sayiMi(x - 2, y - 1))
+                    dgvPanel.Rows[y - 1].Cells[x - 2].Style.BackColor = Color.PaleVioletRed;
             }
             if (y - 2 >= 0 && x + 1 <= X)
             {
-                dgvPanel.Rows[y - 2].Cells[x + 1].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y - 2, x + 1] = 1;
+                if (!sayiMi(x + 1, y - 2))
+                    dgvPanel.Rows[y - 2].Cells[x + 1].Style.BackColor = Color.PaleVioletRed;
             }
             if (y - 2 >= 0 && x - 1 >= 0)
             {
-                dgvPanel.Rows[y - 2].Cells[x - 1].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y - 2, x - 1] = 1;
+                if (!sayiMi(x - 1, y - 2))
+                    dgvPanel.Rows[y - 2].Cells[x - 1].Style.BackColor = Color.PaleVioletRed;
             }
             if (y + 2 <= Y && x - 1 >= 0)
             {
-                dgvPanel.Rows[y + 2].Cells[x - 1].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y + 2, x - 1] = 1;
+                if (!sayiMi(x - 1, y + 2))
+                    dgvPanel.Rows[y + 2].Cells[x - 1].Style.BackColor = Color.PaleVioletRed;
             }
             if (y + 2 <= Y && x + 1 <= X)
             {
-                dgvPanel.Rows[y + 2].Cells[x + 1].Style.BackColor = Color.PaleVioletRed;
-                kontrol[y + 2, x + 1] = 1;
+                if (!sayiMi(x + 1, y + 2))
+                    dgvPanel.Rows[y + 2].Cells[x + 1].Style.BackColor = Color.PaleVioletRed;
             }
 
 
@@ -103,9 +114,9 @@ namespace AtOyunu
         private void btnOlustur_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            for (int i = 0; i < X + 1; i++)
+            for (int i = 0; i <= X; i++)
                 dt.Columns.Add();
-            for (int i = 0; i < Y; i++)
+            for (int j = 0; j <Y; j++)
                 dt.Rows.Add();
 
             dgvPanel.DataSource = dt;
@@ -127,55 +138,49 @@ namespace AtOyunu
 
         private void dgvPanel_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //int tempX = -1, tempY = -1;
             curX = dgvPanel.CurrentCellAddress.X;
             curY = dgvPanel.CurrentCellAddress.Y;
+            //if(tempX==curX && tempY==curY)
+            //    MessageBox.Show("Seçilemez");
+            //tempX = curX;
+            //tempY = curY;
             MessageBox.Show(curX.ToString() + " " + curY.ToString());
             if (k == 0)
             {
+                dgvPanel.Rows[curY].Cells[curX].Value = skor;
+                skor++;
                 Kontrol(curX, curY);
                 k++;
             }
+            if (dgvPanel.Rows[curY].Cells[curX].Style.BackColor == Color.PaleVioletRed && !sayiMi(curX,curY))
+            {
+                dgvPanel.Rows[curY].Cells[curX].Value = skor;
+                skor++;
+                Kontrol(curX, curY);
+            }
             else
             {
-                for (int i = 0; i < X + 1; i++)
-                {
-                    for (int j = 0; j < Y + 1; j++)
-                    {
-                        if (kontrol[i, j] == 1)
-                        {
-                            if (i == curX && j == curY)
-                            {
-                                Kontrol(i, j);
-                                devamEt = true;
-                            }
-                        }
-                    }
-                }
-            }
-            if (devamEt == true)
-            {
-                Temizle();
-                devamEt = false;
-                Kontrol(curX, curY);
+                    MessageBox.Show("Seçilemez!");
             }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            X = 5;
-            Y = 5;
+            X = 4;
+            Y = 4;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            X = 6;
-            Y = 6;
+            X = 5;
+            Y = 5;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            X = 7;
-            Y = 7;
+            X = 6;
+            Y = 6;
         }
     }
 }
