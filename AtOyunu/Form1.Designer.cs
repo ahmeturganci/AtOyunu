@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 370);
+            this.ClientSize = new System.Drawing.Size(507, 414);
             this.Controls.Add(this.radioButton6);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radioButton7);
@@ -151,6 +151,7 @@
             this.Controls.Add(this.btnOlustur);
             this.Controls.Add(this.radioButton2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmAt";
             this.Text = "At Oyunu";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPanel)).EndInit();

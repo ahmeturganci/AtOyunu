@@ -129,7 +129,7 @@ namespace AtOyunu
             if (sayac >= 8)
             {
                 MessageBox.Show("Oyun Bitti.\n Skorunuz : " + (skor - 1).ToString(), "Oyun");
-                MessageBox.Show("Yeni Sahne Yükleniyor");
+                MessageBox.Show("Yeni Sahne Yükleniyor . . .", "Oyun");
                 Application.Restart();
             }
         }
@@ -162,6 +162,9 @@ namespace AtOyunu
             radioButton5.Enabled = false;
             radioButton6.Enabled = false;
             radioButton7.Enabled = false;
+            btnOlustur.Enabled = false;
+            if(X>8 && Y>8)
+                this.WindowState = FormWindowState.Maximized;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
