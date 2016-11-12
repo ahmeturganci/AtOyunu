@@ -1,6 +1,6 @@
 ﻿namespace AtOyunu
 {
-    partial class Form1
+    partial class frmAt
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAt));
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.btnOlustur = new System.Windows.Forms.Button();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -136,7 +137,7 @@
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
-            // Form1
+            // frmAt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,7 +150,8 @@
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.btnOlustur);
             this.Controls.Add(this.radioButton2);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmAt";
             this.Text = "At Oyunu";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPanel)).EndInit();
             this.ResumeLayout(false);

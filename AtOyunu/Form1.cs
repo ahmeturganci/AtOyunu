@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace AtOyunu
 {
-    public partial class Form1 : Form
+    public partial class frmAt : Form
     {
         int X, Y, curX, curY, k = 0, skor = 1;
-        public Form1()
+        public frmAt()
         {
             InitializeComponent();
         }
@@ -127,7 +127,11 @@ namespace AtOyunu
                     sayac++;
             }
             if (sayac >= 8)
+            {
                 MessageBox.Show("Oyun Bitti.\n Skorunuz : " + (skor - 1).ToString(), "Oyun");
+                MessageBox.Show("Yeni Sahne Yükleniyor");
+                Application.Restart();
+            }
         }
         private void btnOlustur_Click(object sender, EventArgs e)
         {
@@ -152,6 +156,12 @@ namespace AtOyunu
             dgvPanel.ColumnHeadersVisible = false;
             dgvPanel.RowHeadersVisible = false;
             dgvPanel.AutoSize = true;
+            radioButton2.Enabled = false;
+            radioButton3.Enabled = false;
+            radioButton4.Enabled = false;
+            radioButton5.Enabled = false;
+            radioButton6.Enabled = false;
+            radioButton7.Enabled = false;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -191,14 +201,9 @@ namespace AtOyunu
 
         private void dgvPanel_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int tempX = -2, tempY = -2;
+           
             curX = dgvPanel.CurrentCellAddress.X;
             curY = dgvPanel.CurrentCellAddress.Y;
-            //if (tempX == curX && tempY == curY)
-            //    MessageBox.Show("Seçilemez!", "Oyun");
-            //tempX = curX;
-            //tempY = curY;
-            //x ve y adres değerleri ekrana yazdir => MessageBox.Show(curX.ToString() + " " + curY.ToString());
             if (k == 0) // program ilk çalıştığında
             {
                 dgvPanel.Rows[curY].Cells[curX].Value = skor;
